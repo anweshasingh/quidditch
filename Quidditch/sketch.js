@@ -31,7 +31,7 @@ function setup() {
 
 function draw() {
 background("black")
-text("SCORE: ")
+text("SCORE: ", score, 50,300);
   pitch.velocityX =  -3;
   if (pitch.x < 0){
     pitch.x = pitch.width/2;
@@ -50,9 +50,21 @@ text("SCORE: ")
     player.x = player.x-10
   }
 
-  if(quaffleGroup.isTouching(player)){
-    score = score-2
-  }
+  //if(quaffleGroup.isTouching(player)){
+    //score = score-20
+  //}
+  //if (bludgerGroup.isTouching(player)) {
+    //score = score+20
+  //}
+
+  //if(gsGroup.isTouching(player)){
+    //score = score+150
+    //fontSize = 20
+    //text("YOU WIN!!", 600,400);
+  //}
+
+
+
 
   spwanQ();
   quaffleGroup = new Group();
