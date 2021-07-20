@@ -18,10 +18,11 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200,800);
+  createCanvas(1200,700);
 
-  pitch = createSprite(600,400);
+  pitch = createSprite(400,400);
   pitch.addImage(pitchImg);
+ 
   pitch.scale = 2
 
   player = createSprite(70, 200, 50, 50);
@@ -38,13 +39,14 @@ function draw() {
 background("white")
 fontSize = 50
 fill("black")
-text("SCORE: ", score, 100,300);
+text("SCORE: "+ score, 1000,100);
 if(gameState === PLAY){
   pitch.velocityX = -3;
-
-  if (pitch.x < 500){
-    pitch.x = 600;
+  
+  if (pitch.x < 300){
+    pitch.x = 400;
   }
+  
   if(keyDown(UP_ARROW)){
     player.y = player.y-10
   }
@@ -66,6 +68,9 @@ if(gameState === PLAY){
     fontSize = 20
     text("YOU WIN!!", 600,400);
   }
+  spwanQ();
+  spwanGS();
+  spwanBludger();
 }
 else if(gameState === END) {
   pitch.velocityX = 0
@@ -76,17 +81,19 @@ else if(gameState === END) {
   quaffleGroup.setLifetimeEach(-1);
   gsGroup.setLifetimeEach(-1);
   bludgerGroup.setLifetimeEach(-1);
+
+  bludgerGroup.destroyEach();
+  quaffleGroup.destroyEach();
+  gsGroup.destroyEach();
 }
 
-  spwanQ();
-  spwanGS();
-  spwanBludger();
+  
   drawSprites();
 }
 
 function spwanQ() {
   if(frameCount % 80 ===0){
-    quaffle = createSprite(Math.round(random(10,1100)),Math.round(random(20,700)),40,10)
+    quaffle = createSprite(Math.round(random(100,900)),Math.round(random(20,700)),40,10)
     quaffle.addImage(quaffleImg)
     quaffle.velocityX = -5
     quaffle.scale = 0.1
@@ -96,7 +103,7 @@ function spwanQ() {
 
 function spwanGS() {
   if(frameCount % 100 ===0){
-    gs = createSprite(Math.round(random(10,1100)),Math.round(random(20,700)),40,10)
+    gs = createSprite(Math.round(random(100,900)),Math.round(random(20,700)),40,10)
     gs.addImage(gsImg)
     gs.velocityX = -10
     gs.scale = 0.1
