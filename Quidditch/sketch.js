@@ -69,7 +69,12 @@ if(gameState === PLAY){
     text("YOU WIN!!", 600,400);
   }
   spwanQ();
-  spwanGS();
+  //spwanGS();
+  GSGroup = new Group();
+  GSG = [];
+  for(var i = 1; i<5; i++) {
+    spwanGS();
+  }
   spwanBludger();
 }
 else if(gameState === END) {
@@ -105,7 +110,7 @@ function spwanGS() {
   if(frameCount % 100 ===0){
     gs = createSprite(Math.round(random(100,900)),Math.round(random(20,700)),40,10)
     gs.addImage(gsImg)
-    gs.velocityX = -10
+    //gs.velocityX = -10
     gs.scale = 0.1
     gsGroup.add(gs);
   }
